@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+javafx.Application<|-- Controller
+Controller - SceneManager
+Controller -- Inventory
+Controller - Item
+Controller - FileManager
+Inventory -- FileManager
+Inventory *-- Item
+
+Class Controller {
+}
+Class SceneManager{
+}
+Class FileManager{
+     saveToFile()
+     loadFromFile()
+     formatTSV()
+     formatJSON()
+     formatHTML()
+}
+Class Inventory{
+     itemList : ArrayList<Item>
+
+     addItem()
+     removeItem()
+     confirmSerialUniqueness()
+     sortByValue()
+     sortBySerialNumber()
+     sortByName()
+     searchBySerialNumber()
+     searchByName()
+}
+Class Item{
+     value : double
+     serialNumber : String
+     name : String
+
+     setValue()
+     getValue
+     setSerialNumber()
+     getSerialNumber()
+     setName()
+     getName()
+     itemConstructor()
+     confirmSerialFormat()
+     confirmNameLength()
+}
+@enduml
