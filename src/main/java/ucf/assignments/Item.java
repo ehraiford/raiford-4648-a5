@@ -1,3 +1,5 @@
+package ucf.assignments;
+
 public class Item {
     private double value;
     private String serialNumber;

@@ -2,16 +2,13 @@
 'https://plantuml.com/sequence-diagram
 
 javafx.Application<|-- Controller
-Controller - SceneManager
 Controller -- Inventory
 Controller - Item
-Controller - FileManager
+Controller -- FileManager
 Inventory -- FileManager
 Inventory *-- Item
 
 Class Controller {
-}
-Class SceneManager{
 }
 Class FileManager{
      saveToFile()
