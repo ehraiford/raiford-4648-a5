@@ -70,11 +70,21 @@ public class Inventory {
         }
     }
 
-    void searchBySerialNumber(String input){
-
+    int searchBySerialNumber(String input){
+        for(int ticker = 0; ticker < items.size(); ticker++){
+            if(items.get(ticker).getSerialNumber().compareTo(input) == 0){
+                return ticker;
+            }
+        }
+        return -1;
     }
 
-    void searchByName(String input){
-
+    int searchByName(String input){
+        for(int ticker = 0; ticker < items.size(); ticker++){
+            if(items.get(ticker).getName().compareTo(input) == 0){
+                return ticker;
+            }
+        }
+        return -1;
     }
 }
