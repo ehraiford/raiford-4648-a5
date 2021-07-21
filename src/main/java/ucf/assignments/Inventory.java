@@ -7,11 +7,15 @@ public class Inventory {
     private ArrayList<Item> items = new ArrayList();
 
     void addItem(Item input) {
-        this.items.add(input);
+        items.add(input);
     }
 
     void removeItem(Item input) {
         items.remove(input);
+    }
+
+    ArrayList<Item> getItems(){
+        return items;
     }
 
     int getItemIndexByName(String input) {
@@ -20,7 +24,6 @@ public class Inventory {
                 return ticker;
             }
         }
-
         return -1;
     }
 
