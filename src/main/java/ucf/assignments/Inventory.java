@@ -27,7 +27,12 @@ public class Inventory {
         return -1;
     }
 
-    boolean confirmSerialUniqueness() {
+    boolean confirmSerialUniqueness(String string) {
+        for(int ticker = 0; ticker < items.size(); ticker++){
+            if(items.get(ticker).getSerialNumber().compareTo(string) == 0){
+                return false;
+            }
+        }
         return true;
     }
 

@@ -59,4 +59,31 @@ class InventoryTest {
         assertEquals(2, inventory.getItemIndexByName("iPad Mini"));
 
     }
+    @Test
+    void confirmSerialUniquenessReturnsTrueIfTheSerialIsUnique(){
+        Item item1 = new Item(2, "14567sd", "Scotch Tape");
+        Item item2 = new Item(399.99, "d234", "iPad Mini");
+        Item item3 = new Item(450.00, "6623dfs", "Printer Ink");
+
+        Inventory inventory = new Inventory();
+        inventory.addItem(item2);
+        inventory.addItem(item1);
+        inventory.addItem(item3);
+
+        assertTrue(inventory.confirmSerialUniqueness("asdf123490"));
+    }
+
+    @Test
+    void confirmSerialUniquenessReturnsFalseIfTheSerialIsNotUnique(){
+        Item item1 = new Item(2, "14567sd", "Scotch Tape");
+        Item item2 = new Item(399.99, "d234", "iPad Mini");
+        Item item3 = new Item(450.00, "6623dfs", "Printer Ink");
+
+        Inventory inventory = new Inventory();
+        inventory.addItem(item2);
+        inventory.addItem(item1);
+        inventory.addItem(item3);
+
+        assertFalse(inventory.confirmSerialUniqueness("d234"));
+    }
 }
