@@ -76,7 +76,7 @@
                   <Insets bottom="10.0" right="10.0" top="5.0" />
                </GridPane.margin>
             </TextField>
-            <SplitMenuButton mnemonicParsing="false" onAction="#saveTSV" text="Save TSV" GridPane.valignment="TOP">
+            <SplitMenuButton mnemonicParsing="false" onAction="#saveTSV" text="Save TSV" GridPane.rowIndex="2" GridPane.valignment="CENTER">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#saveHTML" text="Save as HTML" />
                   <MenuItem mnemonicParsing="false" onAction="#saveJSON" text="Save as JSON" />
@@ -85,7 +85,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                </GridPane.margin>
             </SplitMenuButton>
-            <SplitMenuButton mnemonicParsing="false" onAction="#loadTSV" text="Load TSV" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+            <SplitMenuButton mnemonicParsing="false" onAction="#loadTSV" text="Load TSV" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#loadHTML" text="Load from HTML" />
                   <MenuItem mnemonicParsing="false" onAction="#loadJSON" text="Load from JSON" />
@@ -118,12 +118,12 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="65.0" />
                </GridPane.margin>
             </Text>
-            <TextField fx:id="addName1" maxWidth="120.0" minWidth="30.0" prefWidth="30.0" promptText="Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <TextField fx:id="editName" maxWidth="120.0" minWidth="30.0" prefWidth="30.0" promptText="Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="5.0" top="70.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="addSerial1" maxWidth="100.0" minWidth="180.0" prefWidth="200.0" promptText="Search Info" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <TextField fx:id="searchInfo" maxWidth="100.0" minWidth="180.0" prefWidth="200.0" promptText="Search Info" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="10.0" right="5.0" top="45.0" />
                </GridPane.margin>
@@ -153,16 +153,24 @@
                   <Insets bottom="35.0" />
                </GridPane.margin>
             </Line>
-            <Button minWidth="185.0" mnemonicParsing="false" onAction="#sortByName" text="Sort By Name" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <SplitMenuButton alignment="CENTER" contentDisplay="CENTER" minWidth="185.0" mnemonicParsing="false" onAction="#sortByName" text="Sort By Name" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#sortBySerial" text="Sort By Serial" />
+              </items>
                <GridPane.margin>
-                  <Insets top="10.0" />
+                  <Insets top="5.0" />
                </GridPane.margin>
-            </Button>
-            <Button minWidth="185.0" mnemonicParsing="false" onAction="#sortBySerial" text="Sort By Serial Number" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            </SplitMenuButton>
+            <TextField fx:id="fileName" maxWidth="100.0" minWidth="185.0" prefWidth="200.0" promptText="File Name" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets top="80.0" />
+                  <Insets left="10.0" top="50.0" />
                </GridPane.margin>
-            </Button>
+            </TextField>
+            <TextField fx:id="fileDirectory" maxWidth="100.0" minWidth="185.0" prefWidth="200.0" promptText="File Directory" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="3.0" left="10.0" />
+               </GridPane.margin>
+            </TextField>
          </children>
       </GridPane>
    </children>

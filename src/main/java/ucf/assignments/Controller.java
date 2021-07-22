@@ -2,11 +2,33 @@ package ucf.assignments;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class Controller {
-    @FXML TableView tableContents = new TableView();
 
+    @FXML
+    TextField fileDirectory = new TextField();
+    @FXML
+    TextField fileName = new TextField();
+    @FXML
+    TextField addValue = new TextField();
+    @FXML
+    TextField editSerial = new TextField();
+    @FXML
+    TextField searchInfo = new TextField();
+    @FXML
+    TextField editName = new TextField();
+    @FXML
+    TextField resultField = new TextField();
+    @FXML
+    TextField editValue = new TextField();
+    @FXML
+    TextField addSerial = new TextField();
+    @FXML
+    TextField addName = new TextField();
+    @FXML
+    TextArea textArea = new TextArea();
 
     public void addItem(ActionEvent actionEvent) {
     }
