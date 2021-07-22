@@ -2,14 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.App">
+<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.Controller">
    <children>
       <GridPane layoutX="153.0" layoutY="137.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -23,24 +28,139 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="tableContents" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="394.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-              <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="130.0" text="Name" />
-                  <TableColumn fx:id="serialColumn" prefWidth="130.0" text="Serial No." />
-                <TableColumn fx:id="valueColumn" prefWidth="133.0" text="Value" />
-              </columns>
+            <TextArea fx:id="textArea" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="398.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
                <GridPane.margin>
-                  <Insets bottom="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="5.0" right="5.0" top="35.0" />
+               </GridPane.margin></TextArea>
+            <TextField fx:id="addName" maxWidth="120.0" minWidth="30.0" prefWidth="30.0" promptText="Name" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="40.0" />
+               </GridPane.margin></TextField>
+            <TextField fx:id="addSerial" maxWidth="100.0" minWidth="30.0" prefWidth="30.0" promptText="Serial Number" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="75.0" />
                </GridPane.margin>
-            </TableView>
-            <Button mnemonicParsing="false" onAction="#loadFromFileClicked" text="Load from File" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            </TextField>
+            <TextField fx:id="editValue" maxWidth="80.0" minWidth="30.0" prefWidth="30.0" promptText="Value" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="-10.0" left="10.0" right="5.0" top="75.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Item:" underline="true" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="43.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Line endX="95.0" startX="-95.0" strokeLineCap="ROUND" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="35.0" />
+               </GridPane.margin></Line>
+            <Button minWidth="185.0" mnemonicParsing="false" onAction="#addItem" text="Add Item" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="65.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#saveToFileClicked" text="Save to File" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            <Line endX="95.0" startX="-95.0" strokeLineCap="ROUND" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Line>
+            <TextField fx:id="resultField" alignment="CENTER" editable="false" maxWidth="398.0" minWidth="398.0" prefWidth="398.0" promptText="Result" GridPane.columnIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="10.0" right="10.0" top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <SplitMenuButton mnemonicParsing="false" onAction="#saveTSV" text="Save TSV" GridPane.valignment="TOP">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveHTML" text="Save as HTML" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveJSON" text="Save as JSON" />
+              </items>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+               </GridPane.margin>
+            </SplitMenuButton>
+            <SplitMenuButton mnemonicParsing="false" onAction="#loadTSV" text="Load TSV" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#loadHTML" text="Load from HTML" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadJSON" text="Load from JSON" />
+               </items>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="7.0" top="5.0" />
+               </GridPane.margin>
+            </SplitMenuButton>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" underline="true" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+               </GridPane.margin>
+            </Text>
+            <SplitMenuButton mnemonicParsing="false" text="Search By Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#searchBySerialNumber" text="Search By Serial" />
+               </items>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </SplitMenuButton>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Item" underline="true" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="65.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField fx:id="addName1" maxWidth="120.0" minWidth="30.0" prefWidth="30.0" promptText="Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="70.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="addSerial1" maxWidth="100.0" minWidth="180.0" prefWidth="200.0" promptText="Search Info" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="10.0" right="5.0" top="45.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="95.0" startX="-95.0" strokeLineCap="ROUND" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="15.0" />
+               </GridPane.margin>
+            </Line>
+            <TextField fx:id="editSerial" maxWidth="100.0" minWidth="30.0" prefWidth="30.0" promptText="Serial Number" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="-10.0" left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="addValue" maxWidth="80.0" minWidth="30.0" prefWidth="30.0" promptText="Value" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="75.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button minWidth="185.0" mnemonicParsing="false" onAction="#editItem" text="Edit Item" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Line endX="95.0" startX="-95.0" strokeLineCap="ROUND" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </Line>
+            <Button minWidth="185.0" mnemonicParsing="false" onAction="#sortByName" text="Sort By Name" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button minWidth="185.0" mnemonicParsing="false" onAction="#sortBySerial" text="Sort By Serial Number" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="80.0" />
                </GridPane.margin>
             </Button>
          </children>

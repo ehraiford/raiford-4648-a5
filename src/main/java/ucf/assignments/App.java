@@ -21,14 +21,8 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("InventoryManager.fxml"));
 
         Scene scene = new Scene(root);
-
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void loadFromFileClicked(ActionEvent actionEvent) {
-    }
-
-    public void saveToFileClicked(ActionEvent actionEvent) {
     }
 }
