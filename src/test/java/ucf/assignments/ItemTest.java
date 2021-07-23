@@ -5,6 +5,15 @@ import org.junit.jupiter.api.Test;
 class ItemTest {
 
     @Test
+    void mytest() {
+        try {
+            double doub = Double.parseDouble("sdfg");
+            System.out.println(doub);
+        } catch (Exception e) {
+            System.out.println("Value must be a numeric value.");
+        }
+    }
+    @Test
     void confirmSerialFormatReturnsTrueWhenAllCharsAreLettersAndNumbers(){
         Item item = new Item(50.00, "xkcd1492chess", "All-Purpose-Flour");
         assert(item.confirmSerialFormat(item.getSerialNumber()));

@@ -88,7 +88,7 @@ class InventoryTest {
     }
 
     @Test
-    void searchBySerialNumberReturnsIndexOfCorrectItem(){
+    void displayInfoGivenSerialReturnsInfoOfCorrectItems(){
         Item item1 = new Item(2, "14567sd", "Scotch Tape");
         Item item2 = new Item(399.99, "d234", "iPad Mini");
         Item item3 = new Item(450.00, "6623dfs", "Printer Ink");
@@ -98,11 +98,11 @@ class InventoryTest {
         inventory.addItem(item1);
         inventory.addItem(item3);
 
-        assertEquals(0, inventory.searchBySerialNumber("d234"));
+        assertEquals(0, inventory.displayInfo("Serial", "d234").compareTo("Name                       Serial Number      Value\niPad Mini                  d234               399.99\n"));
     }
 
     @Test
-    void searchBySerialNumberReturnsNeg1IfNoMatchesFound(){
+    void searchByNameReturnsIndexOfCorrectItems(){
         Item item1 = new Item(2, "14567sd", "Scotch Tape");
         Item item2 = new Item(399.99, "d234", "iPad Mini");
         Item item3 = new Item(450.00, "6623dfs", "Printer Ink");
@@ -111,35 +111,7 @@ class InventoryTest {
         inventory.addItem(item2);
         inventory.addItem(item1);
         inventory.addItem(item3);
-
-        assertEquals(-1, inventory.searchBySerialNumber("asdfkjh12"));
+        assertEquals(0, inventory.displayInfo("Name", "in").compareTo("Name                       Serial Number      Value\niPad Mini                  d234               399.99\nPrinter Ink                6623dfs            450.00\n"));
     }
 
-    @Test
-    void searchByNameReturnsIndexOfCorrectItem(){
-        Item item1 = new Item(2, "14567sd", "Scotch Tape");
-        Item item2 = new Item(399.99, "d234", "iPad Mini");
-        Item item3 = new Item(450.00, "6623dfs", "Printer Ink");
-
-        Inventory inventory = new Inventory();
-        inventory.addItem(item2);
-        inventory.addItem(item1);
-        inventory.addItem(item3);
-
-        assertEquals(2, inventory.searchByName("Printer Ink"));
-    }
-
-    @Test
-    void searchByNameReturnsNeg1IfNoMatchesFound(){
-        Item item1 = new Item(2, "14567sd", "Scotch Tape");
-        Item item2 = new Item(399.99, "d234", "iPad Mini");
-        Item item3 = new Item(450.00, "6623dfs", "Printer Ink");
-
-        Inventory inventory = new Inventory();
-        inventory.addItem(item2);
-        inventory.addItem(item1);
-        inventory.addItem(item3);
-
-        assertEquals(-1, inventory.searchByName("iPad Pro"));
-    }
 }

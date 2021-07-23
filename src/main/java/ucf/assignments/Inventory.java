@@ -27,6 +27,32 @@ public class Inventory {
         return -1;
     }
 
+    String displayInfo(){
+        String display = "Name                       Serial Number      Value\n";
+        for(int ticker = 0; ticker < items.size(); ticker++){
+            display = display + items.get(ticker).displayInfo();
+        }
+        return display;
+    }
+
+    String displayInfo(String parameter, String data){
+        String display = "Name                       Serial Number      Value\n";
+        if(parameter.compareTo("Serial") == 0){
+            for(int ticker = 0; ticker < items.size(); ticker++){
+                if(items.get(ticker).getSerialNumber().contains(data)){
+                    display = display + items.get(ticker).displayInfo();
+                }
+            }
+        }else{
+            for(int ticker = 0; ticker < items.size(); ticker++){
+                if(items.get(ticker).getName().contains(data)){
+                    display = display + items.get(ticker).displayInfo();
+                }
+            }
+        }
+        return display;
+    }
+
     boolean confirmSerialUniqueness(String string) {
         for(int ticker = 0; ticker < items.size(); ticker++){
             if(items.get(ticker).getSerialNumber().compareTo(string) == 0){
@@ -68,23 +94,5 @@ public class Inventory {
                 }
             }
         }
-    }
-
-    int searchBySerialNumber(String input){
-        for(int ticker = 0; ticker < items.size(); ticker++){
-            if(items.get(ticker).getSerialNumber().compareTo(input) == 0){
-                return ticker;
-            }
-        }
-        return -1;
-    }
-
-    int searchByName(String input){
-        for(int ticker = 0; ticker < items.size(); ticker++){
-            if(items.get(ticker).getName().compareTo(input) == 0){
-                return ticker;
-            }
-        }
-        return -1;
     }
 }
