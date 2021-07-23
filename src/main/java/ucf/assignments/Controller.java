@@ -108,7 +108,7 @@ public class Controller {
         textArea.setText(inventory.displayInfo());
     }
 
-    public void saveTSV(ActionEvent actionEvent) throws FileNotFoundException {
+    public void saveTSV(ActionEvent actionEvent) throws Exception {
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter tsv = new FileChooser.ExtensionFilter("TSV (.tsv)", "*.tsv");
         FileChooser.ExtensionFilter html = new FileChooser.ExtensionFilter("HTML (.html)", "*.html");
@@ -117,9 +117,13 @@ public class Controller {
         fileChooser.getExtensionFilters().add(html);
         fileChooser.getExtensionFilters().add(json);
         File file = fileChooser.showSaveDialog(null);
-        FileManager.saveData(file, inventory);
 
-
+        if (file != null) {
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            FileManager.saveData(file, inventory);
+        }
     }
 
     public void saveJSON(ActionEvent actionEvent) {
