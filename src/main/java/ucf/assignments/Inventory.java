@@ -34,7 +34,7 @@ public class Inventory {
         }
         return display;
     }
-
+    //alternative displayInfo() that will display only items whose parameter (either serial or name) contains the given data.
     String displayInfo(String parameter, String data){
         String display = "Name                       Serial Number      Value\n";
         if(parameter.compareTo("Serial") == 0){
@@ -93,6 +93,31 @@ public class Inventory {
                     Collections.swap(items, ticker, ticker2);
                 }
             }
+        }
+    }
+
+    int confirmOnlyOne(String parameter, String data){
+        int count = 0;
+        int index = -1;
+        if(parameter.compareTo("Name") == 0) {
+            for (int ticker = 0; ticker < items.size(); ticker++) {
+                if (items.get(ticker).getName().contains(data)) {
+                    index = ticker;
+                    count++;
+                }
+            }
+        }else{
+            for(int ticker =  0; ticker < items.size(); ticker++){
+                if(items.get(ticker).getSerialNumber().contains(data)){
+                    index = ticker;
+                    count++;
+                }
+            }
+        }
+        if(count == 1){
+            return index;
+        }else{
+            return -1;
         }
     }
 }

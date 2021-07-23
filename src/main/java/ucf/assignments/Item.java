@@ -7,6 +7,7 @@ public class Item {
     private double value;
     private String serialNumber;
     private String name;
+    private String valueString;
 
     public Item() {
         //empty constructor
@@ -14,9 +15,12 @@ public class Item {
 
     public Item(double value, String serialNumber, String name) {
             this.value = value;
+            this.valueString = String.format("%.2f", value);
             this.serialNumber = serialNumber;
             this.name = name;
-    }    public boolean confirmSerialFormat(String input){
+    }
+
+    public boolean confirmSerialFormat(String input){
         for(int ticker = 0; ticker < input.length(); ticker ++){
             if(!Character.isAlphabetic(input.charAt(ticker)) && !Character.isDigit(input.charAt(ticker))){
                 return false;
@@ -33,8 +37,13 @@ public class Item {
         return value;
     }
 
+    public String getValueString(){
+        return valueString;
+    }
+
     public void setValue(double value) {
         this.value = value;
+        this.valueString = String.format("%.2f", value);
     }
 
     public String getSerialNumber() {
@@ -53,7 +62,6 @@ public class Item {
         this.name = name;
     }
 
-
     private String calcSpace(String input, int available) {
         String spaces = "";
         if (input.length() < available) {
@@ -65,9 +73,7 @@ public class Item {
         return " ";
     }
 
-
     public String displayInfo(){
-        String valueString = String.format("%.2f", this.value);
         String space1 = calcSpace(this.name, 27);
         String space2 = calcSpace(this.serialNumber, 19);
         return name + space1+ serialNumber + space2 + valueString +"\n";
