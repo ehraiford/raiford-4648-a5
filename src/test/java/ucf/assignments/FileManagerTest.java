@@ -19,7 +19,7 @@ class FileManagerTest {
 
         manager.formatTSV(items);
 
-        assertEquals(0, manager.data.compareTo("Kitschy Mug\txkcd12344\t19.99\nTacky T-Shirt\t8sdds12\t29.99\nGaudy Snow-Globe\tsjsj102\t14.99\n"));
+        assertEquals(0, manager.data.compareTo("Kitschy Mug\txkcd12344\t19.99\t\nTacky T-Shirt\t8sdds12\t29.99\t\nGaudy Snow-Globe\tsjsj102\t14.99\t\n"));
     }
 
     @Test

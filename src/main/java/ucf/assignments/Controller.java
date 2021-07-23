@@ -4,8 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import javax.swing.*;
+import javafx.stage.FileChooser;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Controller {
 
@@ -22,7 +23,7 @@ public class Controller {
     @FXML TextArea textArea = new TextArea();
     private Inventory inventory = new Inventory();
     private int editIndex;
-    final JFileChooser fileChooser = new JFileChooser();
+    private FileChooser fileChooser = new FileChooser();
 
     public void addItem(ActionEvent actionEvent) {
         Item item = new Item();
@@ -107,7 +108,18 @@ public class Controller {
         textArea.setText(inventory.displayInfo());
     }
 
-    public void saveTSV(ActionEvent actionEvent) {
+    public void saveTSV(ActionEvent actionEvent) throws FileNotFoundException {
+        fileChooser.setTitle("Save File");
+        FileChooser.ExtensionFilter tsv = new FileChooser.ExtensionFilter("TSV (.tsv)", "*.tsv");
+        FileChooser.ExtensionFilter html = new FileChooser.ExtensionFilter("HTML (.html)", "*.html");
+        FileChooser.ExtensionFilter json = new FileChooser.ExtensionFilter("JSON (.json)", "*.json");
+        fileChooser.getExtensionFilters().add(tsv);
+        fileChooser.getExtensionFilters().add(html);
+        fileChooser.getExtensionFilters().add(json);
+        File file = fileChooser.showSaveDialog(null);
+        FileManager.saveData(file, inventory);
+
+
     }
 
     public void saveJSON(ActionEvent actionEvent) {
@@ -116,7 +128,16 @@ public class Controller {
     public void saveHTML(ActionEvent actionEvent) {
     }
 
-    public void loadTSV(ActionEvent actionEvent) {
+    public void loadTSV(ActionEvent actionEvent) throws FileNotFoundException {
+        fileChooser.setTitle("Load File");
+        File selected = fileChooser.showOpenDialog(null);
+        if (selected != null) {
+            resultField.setText("Opened " + selected.getName() + ".");
+            inventory = FileManager.readData(selected);
+            textArea.setText(inventory.displayInfo());
+        }else{
+            resultField.setText(("Could not open a file."));
+        }
     }
 
     public void loadHTML(ActionEvent actionEvent) {
