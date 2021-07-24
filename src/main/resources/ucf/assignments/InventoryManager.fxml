@@ -47,6 +47,26 @@
                   <Insets bottom="5.0" left="10.0" right="5.0" top="75.0" />
                </GridPane.margin>
             </TextField>
+            <TextField fx:id="addValue" maxWidth="80.0" minWidth="30.0" prefWidth="30.0" promptText="Value" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="10.0" right="5.0" top="75.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="searchInfo" maxWidth="100.0" minWidth="180.0" prefWidth="200.0" promptText="Search Info" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="10.0" right="5.0" top="45.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="editName" maxWidth="120.0" minWidth="30.0" prefWidth="30.0" promptText="Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="70.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="editSerial" maxWidth="100.0" minWidth="30.0" prefWidth="30.0" promptText="Serial Number" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="-10.0" left="10.0" />
+               </GridPane.margin>
+            </TextField>
             <TextField fx:id="editValue" maxWidth="80.0" minWidth="30.0" prefWidth="30.0" promptText="Value" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="-10.0" left="10.0" right="5.0" top="75.0" />
@@ -95,31 +115,11 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="65.0" />
                </GridPane.margin>
             </Text>
-            <TextField fx:id="editName" maxWidth="120.0" minWidth="30.0" prefWidth="30.0" promptText="Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="5.0" top="70.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="searchInfo" maxWidth="100.0" minWidth="180.0" prefWidth="200.0" promptText="Search Info" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets left="10.0" right="5.0" top="45.0" />
-               </GridPane.margin>
-            </TextField>
             <Line endX="95.0" startX="-95.0" strokeLineCap="ROUND" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="15.0" />
                </GridPane.margin>
             </Line>
-            <TextField fx:id="editSerial" maxWidth="100.0" minWidth="30.0" prefWidth="30.0" promptText="Serial Number" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-               <GridPane.margin>
-                  <Insets bottom="-10.0" left="10.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="addValue" maxWidth="80.0" minWidth="30.0" prefWidth="30.0" promptText="Value" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="5.0" top="75.0" />
-               </GridPane.margin>
-            </TextField>
             <Button minWidth="120.0" mnemonicParsing="false" onAction="#editItem" text="Edit Item" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="10.0" top="20.0" />
@@ -135,8 +135,8 @@
             </Button>
             <MenuButton mnemonicParsing="false" text="File" GridPane.halignment="LEFT" GridPane.valignment="TOP">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save File" />
                 <MenuItem mnemonicParsing="false" onAction="#loadFile" text="Load File" />
+                <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save File" />
               </items>
                <GridPane.margin>
                   <Insets left="10.0" top="5.0" />
