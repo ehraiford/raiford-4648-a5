@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -79,24 +79,6 @@
                   <Insets bottom="10.0" right="10.0" top="5.0" />
                </GridPane.margin>
             </TextField>
-            <SplitMenuButton mnemonicParsing="false" onAction="#saveTSV" text="Save TSV" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#saveHTML" text="Save as HTML" />
-                  <MenuItem mnemonicParsing="false" onAction="#saveJSON" text="Save as JSON" />
-              </items>
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
-               </GridPane.margin>
-            </SplitMenuButton>
-            <SplitMenuButton mnemonicParsing="false" onAction="#loadTSV" text="Load TSV" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#loadHTML" text="Load from HTML" />
-                  <MenuItem mnemonicParsing="false" onAction="#loadJSON" text="Load from JSON" />
-               </items>
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="7.0" top="5.0" />
-               </GridPane.margin>
-            </SplitMenuButton>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" underline="true" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <font>
                   <Font size="14.0" />
@@ -105,14 +87,6 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
                </GridPane.margin>
             </Text>
-            <SplitMenuButton mnemonicParsing="false" onAction="#searchByName" text="Search By Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#searchBySerialNumber" text="Search By Serial" />
-               </items>
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </GridPane.margin>
-            </SplitMenuButton>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Item" underline="true" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
@@ -151,29 +125,6 @@
                   <Insets left="10.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Line endX="95.0" startX="-95.0" strokeLineCap="ROUND" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="35.0" />
-               </GridPane.margin>
-            </Line>
-            <SplitMenuButton alignment="CENTER" contentDisplay="CENTER" minWidth="185.0" mnemonicParsing="false" onAction="#sortByName" text="Sort By Name" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#sortBySerial" text="Sort By Serial" />
-              </items>
-               <GridPane.margin>
-                  <Insets top="5.0" />
-               </GridPane.margin>
-            </SplitMenuButton>
-            <TextField fx:id="fileName" maxWidth="100.0" minWidth="185.0" prefWidth="200.0" promptText="File Name" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="10.0" top="50.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="fileDirectory" maxWidth="100.0" minWidth="185.0" prefWidth="200.0" promptText="File Directory" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-               <GridPane.margin>
-                  <Insets bottom="3.0" left="10.0" />
-               </GridPane.margin>
-            </TextField>
             <Button minWidth="40.0" mnemonicParsing="false" onAction="#deleteItem" text="DELETE" textFill="#e40c0c" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets right="5.0" top="20.0" />
@@ -182,6 +133,34 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <MenuButton mnemonicParsing="false" text="File" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save File" />
+                <MenuItem mnemonicParsing="false" onAction="#loadFile" text="Load File" />
+              </items>
+               <GridPane.margin>
+                  <Insets left="10.0" top="5.0" />
+               </GridPane.margin>
+            </MenuButton>
+            <MenuButton mnemonicParsing="false" text="Sort" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#sortByName" text="Sort By Name" />
+                  <MenuItem mnemonicParsing="false" onAction="#sortBySerial" text="Sort By Serial Number" />
+                  <MenuItem mnemonicParsing="false" onAction="#sortByValue" text="Sort By Value" />
+               </items>
+               <GridPane.margin>
+                  <Insets right="10.0" top="5.0" />
+               </GridPane.margin>
+            </MenuButton>
+            <MenuButton mnemonicParsing="false" text="Search" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#searchByName" text="Search By Name" />
+                  <MenuItem mnemonicParsing="false" onAction="#searchBySerialNumber" text="Search By Serial Number" />
+               </items>
+               <GridPane.margin>
+                  <Insets right="10.0" top="15.0" />
+               </GridPane.margin>
+            </MenuButton>
          </children>
       </GridPane>
    </children>

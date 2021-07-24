@@ -10,8 +10,6 @@ import java.io.FileNotFoundException;
 
 public class Controller {
 
-    @FXML TextField fileDirectory = new TextField();
-    @FXML TextField fileName = new TextField();
     @FXML TextField addValue = new TextField();
     @FXML TextField editSerial = new TextField();
     @FXML TextField searchInfo = new TextField();
@@ -108,7 +106,13 @@ public class Controller {
         textArea.setText(inventory.displayInfo());
     }
 
-    public void saveTSV(ActionEvent actionEvent) throws Exception {
+    public void sortByValue(ActionEvent actionEvent) {
+        resultField.setText("Sorted by Value.");
+        inventory.sortByValue();
+        textArea.setText(inventory.displayInfo());
+    }
+
+    public void saveFile(ActionEvent actionEvent) throws Exception {
         fileChooser.setTitle("Save File");
         FileChooser.ExtensionFilter tsv = new FileChooser.ExtensionFilter("TSV (.tsv)", "*.tsv");
         FileChooser.ExtensionFilter html = new FileChooser.ExtensionFilter("HTML (.html)", "*.html");
@@ -126,13 +130,7 @@ public class Controller {
         }
     }
 
-    public void saveJSON(ActionEvent actionEvent) {
-    }
-
-    public void saveHTML(ActionEvent actionEvent) {
-    }
-
-    public void loadTSV(ActionEvent actionEvent) throws FileNotFoundException {
+    public void loadFile(ActionEvent actionEvent) throws FileNotFoundException {
         fileChooser.setTitle("Load File");
         File selected = fileChooser.showOpenDialog(null);
         if (selected != null) {
@@ -142,11 +140,5 @@ public class Controller {
         }else{
             resultField.setText(("Could not open a file."));
         }
-    }
-
-    public void loadHTML(ActionEvent actionEvent) {
-    }
-
-    public void loadJSON(ActionEvent actionEvent) {
     }
 }
