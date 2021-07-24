@@ -9,7 +9,9 @@ public class Inventory {
     void addItem(Item input) {
         items.add(input);
     }
-
+    void setArrayList(ArrayList<Item> input){
+        items = input;
+    }
     void removeItem(Item input) {
         items.remove(input);
     }

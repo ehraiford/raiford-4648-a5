@@ -1,9 +1,11 @@
 package ucf.assignments;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager {
@@ -24,7 +26,7 @@ public class FileManager {
         }else if(extension.compareTo("html") == 0){
             inventory = readHTML();
         }else if(extension.compareTo("json") == 0){
-
+            inventory = readJson();
         }
         return inventory;
     }
@@ -65,16 +67,25 @@ public class FileManager {
         return inventory;
     }
 
+
+    public static Inventory readJson() throws FileNotFoundException {
+        Inventory inventory = new Inventory();
+        inventory = (new Gson().fromJson(data, Inventory.class));
+
+
+       return inventory;
+    }
+
     public static void saveData(File file, Inventory items) throws IOException {
 
         String name = file.getName();
-        String extension = name.substring(name.lastIndexOf(".") + 1, name.length());
+        String extension = name.substring(name.lastIndexOf(".") + 1);
         if(extension.compareTo("tsv") == 0){
             formatTSV(items);
         }else if(extension.compareTo("html") == 0){
             formatHTML(items);
         }else if(extension.compareTo("json") == 0){
-
+            formatJSON(items);
         }
 
         FileWriter writer = new FileWriter(file);
@@ -93,8 +104,8 @@ public class FileManager {
         data = dataTSV;
     }
 
-    void formatJSON(Inventory items){
-
+    public static void formatJSON(Inventory items){
+       data = new Gson().toJson(items);
     }
 
     public static void formatHTML(Inventory items){
