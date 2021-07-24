@@ -42,7 +42,7 @@ public class Controller {
             }
         }catch(Exception e){
         }
-        resultField.setText("Could not add Item. Confirm Item meets requirements within ReadMe.");
+        resultField.setText("Could not add Item. Confirm Item meets requirements in ReadMe.");
     }
 
     public void searchByName(ActionEvent actionEvent) {
@@ -79,8 +79,27 @@ public class Controller {
     }
 
     public void editItem(ActionEvent actionEvent) {
+        //if and try catch function the same way as in add item ensuring the data meets the requirements before altering the item.
         if(editIndex != -1){
+            Item item = new Item();
+            try{
+                double value = Double.parseDouble(editValue.getText());
+                if (item.confirmNameLength(editName.getText()) && item.confirmSerialFormat(editSerial.getText()) && inventory.confirmSerialUniqueness(editSerial.getText())) {
+                    inventory.getItems().get(editIndex).setValue(value);
+                    inventory.getItems().get(editIndex).setName(editName.getText());
+                    inventory.getItems().get(editIndex).setSerialNumber(editSerial.getText());
+                    editValue.setText("");
+                    editSerial.setText("");
+                    editName.setText("");
+                    searchInfo.setText("");
+                    resultField.setText("Item has been updated.");
+                    textArea.setText("Name                       Serial Number      Value\n" + inventory.getItems().get(editIndex).displayInfo());
+                    return;
+                }
+            }catch (Exception e){
 
+            }
+            resultField.setText("Could not edit Item. Confirm changes meet requirements in ReadMe.");
         }else{
             resultField.setText("Narrow your search to only yield one answer.");
         }
@@ -88,7 +107,13 @@ public class Controller {
 
     public void deleteItem(ActionEvent actionEvent) {
         if(editIndex != -1){
-
+            resultField.setText(inventory.getItems().get(editIndex).getName() + " has been deleted.");
+            inventory.getItems().remove(editIndex);
+            editName.setText("");
+            editSerial.setText("");
+            editValue.setText("");
+            searchInfo.setText("");
+            textArea.setText(inventory.displayInfo());
         }else{
             resultField.setText("Narrow your search to only yield one answer.");
         }
