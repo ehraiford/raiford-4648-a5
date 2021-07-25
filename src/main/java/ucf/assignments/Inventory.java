@@ -9,12 +9,6 @@ public class Inventory {
     void addItem(Item input) {
         items.add(input);
     }
-    void setArrayList(ArrayList<Item> input){
-        items = input;
-    }
-    void removeItem(Item input) {
-        items.remove(input);
-    }
 
     ArrayList<Item> getItems(){
         return items;
@@ -67,7 +61,7 @@ public class Inventory {
     void sortByValue() {
         for (int ticker = 0; ticker < items.size() - 1; ticker++) {
             for (int ticker2 = ticker + 1; ticker2 < items.size(); ticker2++) {
-                if (items.get(ticker2).getValue() < items.get(ticker).getValue()) {
+                if (items.get(ticker2).getValue() > items.get(ticker).getValue()) {
                     Collections.swap(items, ticker, ticker2);
                 }
             }

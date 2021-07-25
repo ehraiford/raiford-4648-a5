@@ -21,6 +21,9 @@ public class Item {
     }
 
     public boolean confirmSerialFormat(String input){
+        if(input.length() != 10){
+            return false;
+        }
         for(int ticker = 0; ticker < input.length(); ticker ++){
             if(!Character.isAlphabetic(input.charAt(ticker)) && !Character.isDigit(input.charAt(ticker))){
                 return false;

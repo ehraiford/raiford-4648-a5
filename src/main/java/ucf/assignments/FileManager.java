@@ -3,14 +3,16 @@ package ucf.assignments;
 
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager {
 
     static String data = "";
+
+    public void setData(String input){
+        data = input;
+    }
 
     public static Inventory readData(File file) throws FileNotFoundException {
         String name = file.getName();
@@ -68,8 +70,8 @@ public class FileManager {
     }
 
 
-    public static Inventory readJson() throws FileNotFoundException {
-        Inventory inventory = new Inventory();
+    public static Inventory readJson(){
+        Inventory inventory;
         inventory = (new Gson().fromJson(data, Inventory.class));
 
 
