@@ -23,7 +23,7 @@ public class Controller {
     private Inventory inventory = new Inventory();
     private int editIndex;
     private FileChooser fileChooser = new FileChooser();
-
+    private Boolean extensionsSet = false;
     public void addItem(ActionEvent actionEvent) {
         Item item = new Item();
         //if statement along with the try catch ensure that value, serial number, and name all meet the requirements before the program makes an item with them
@@ -140,12 +140,15 @@ public class Controller {
 
     public void saveFile(ActionEvent actionEvent) throws Exception {
         fileChooser.setTitle("Save File");
-        FileChooser.ExtensionFilter tsv = new FileChooser.ExtensionFilter("TSV (.tsv)", "*.tsv");
-        FileChooser.ExtensionFilter html = new FileChooser.ExtensionFilter("HTML (.html)", "*.html");
-        FileChooser.ExtensionFilter json = new FileChooser.ExtensionFilter("JSON (.json)", "*.json");
-        fileChooser.getExtensionFilters().add(tsv);
-        fileChooser.getExtensionFilters().add(html);
-        fileChooser.getExtensionFilters().add(json);
+        if(!extensionsSet) {
+            FileChooser.ExtensionFilter tsv = new FileChooser.ExtensionFilter("TSV (.tsv)", "*.tsv");
+            FileChooser.ExtensionFilter html = new FileChooser.ExtensionFilter("HTML (.html)", "*.html");
+            FileChooser.ExtensionFilter json = new FileChooser.ExtensionFilter("JSON (.json)", "*.json");
+            fileChooser.getExtensionFilters().add(tsv);
+            fileChooser.getExtensionFilters().add(html);
+            fileChooser.getExtensionFilters().add(json);
+            extensionsSet = true;
+        }
         File file = fileChooser.showSaveDialog(null);
 
         if (file != null) {
@@ -154,10 +157,20 @@ public class Controller {
             }
             FileManager.saveData(file, inventory);
         }
+        resultField.setText("The file has been saved.");
     }
 
     public void loadFile(ActionEvent actionEvent) throws FileNotFoundException {
         fileChooser.setTitle("Load File");
+        if(!extensionsSet) {
+            FileChooser.ExtensionFilter tsv = new FileChooser.ExtensionFilter("TSV (.tsv)", "*.tsv");
+            FileChooser.ExtensionFilter html = new FileChooser.ExtensionFilter("HTML (.html)", "*.html");
+            FileChooser.ExtensionFilter json = new FileChooser.ExtensionFilter("JSON (.json)", "*.json");
+            fileChooser.getExtensionFilters().add(tsv);
+            fileChooser.getExtensionFilters().add(html);
+            fileChooser.getExtensionFilters().add(json);
+            extensionsSet = true;
+        }
         File selected = fileChooser.showOpenDialog(null);
         if (selected != null) {
             resultField.setText("Opened " + selected.getName() + ".");

@@ -26,6 +26,7 @@ Class Controller {
      inventory : inventory
      editIndex : int
      fileChooser : FileChooser
+     extensionSet : boolean
 
      addItem()
      searchByName()
