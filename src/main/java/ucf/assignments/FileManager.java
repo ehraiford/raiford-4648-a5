@@ -19,7 +19,7 @@ public class FileManager {
         Scanner in = new Scanner(file);
         in.useDelimiter("\\Z");
         data = in.next();
-        String extension = name.substring(name.lastIndexOf(".") + 1, name.length());
+        String extension = name.substring(name.lastIndexOf(".") + 1);
 
         Inventory inventory = new Inventory();
 
@@ -68,7 +68,6 @@ public class FileManager {
         }
         return inventory;
     }
-
 
     public static Inventory readJson(){
         Inventory inventory;

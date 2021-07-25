@@ -10,15 +10,16 @@ import java.io.FileNotFoundException;
 
 public class Controller {
 
-    @FXML TextField addValue = new TextField();
-    @FXML TextField editSerial = new TextField();
-    @FXML TextField searchInfo = new TextField();
-    @FXML TextField editName = new TextField();
+    @FXML TextArea textArea = new TextArea();
     @FXML TextField resultField = new TextField();
-    @FXML TextField editValue = new TextField();
+    @FXML TextField addValue = new TextField();
     @FXML TextField addSerial = new TextField();
     @FXML TextField addName = new TextField();
-    @FXML TextArea textArea = new TextArea();
+    @FXML TextField searchInfo = new TextField();
+    @FXML TextField editSerial = new TextField();
+    @FXML TextField editName = new TextField();
+    @FXML TextField editValue = new TextField();
+
     private Inventory inventory = new Inventory();
     private int editIndex;
     private FileChooser fileChooser = new FileChooser();

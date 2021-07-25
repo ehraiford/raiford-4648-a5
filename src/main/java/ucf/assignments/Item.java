@@ -20,22 +20,6 @@ public class Item {
             this.name = name;
     }
 
-    public boolean confirmSerialFormat(String input){
-        if(input.length() != 10){
-            return false;
-        }
-        for(int ticker = 0; ticker < input.length(); ticker ++){
-            if(!Character.isAlphabetic(input.charAt(ticker)) && !Character.isDigit(input.charAt(ticker))){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean confirmNameLength(String input){
-        return input.length() > 1 && input.length() < 257;
-    }
-
     public double getValue() {
         return value;
     }
@@ -63,6 +47,22 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean confirmSerialFormat(String input){
+        if(input.length() != 10){
+            return false;
+        }
+        for(int ticker = 0; ticker < input.length(); ticker ++){
+            if(!Character.isAlphabetic(input.charAt(ticker)) && !Character.isDigit(input.charAt(ticker))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean confirmNameLength(String input){
+        return input.length() > 1 && input.length() < 257;
     }
 
     private String calcSpace(String input, int available) {

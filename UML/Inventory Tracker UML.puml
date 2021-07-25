@@ -7,33 +7,73 @@ Controller - Item
 Controller -- FileManager
 Inventory -- FileManager
 Inventory *-- Item
+App-Controller
+
+Class App{
+    start()
+}
 
 Class Controller {
+     textArea : TextArea
+     resultField : TextField
+     addValue : TextField
+     addSerial : TextField
+     addName : TextField
+     searchInfo : TextField
+     editSerial : TextField
+     editName : TextField
+     editValue : TextField
+     inventory : inventory
+     editIndex : int
+     fileChooser : FileChooser
+
+     addItem()
+     searchByName()
+     searchBySerialNumber()
+     editItem()
+     deleteItem()
+     sortByName()
+     sortBySerial()
+     sortbyValue()
+     saveFile()
+     loadFile()
 }
+
 Class FileManager{
-     saveToFile()
-     loadFromFile()
+     data : String
+
+     setData()
+     readData()
+     readTSV()
+     readHTML()
+     readJSON()
+     saveData()
      formatTSV()
      formatJSON()
      formatHTML()
 }
+
 Class Inventory{
      itemList : ArrayList<Item>
 
      addItem()
-     removeItem()
+     getItems()
+     getItemIndexByName()
+     displayInfo()
      confirmSerialUniqueness()
      sortByValue()
      sortBySerialNumber()
      sortByName()
-     searchBySerialNumber()
-     searchByName()
+     confirmOnlyOne()
 }
+
 Class Item{
      value : double
      serialNumber : String
      name : String
+     valueString : String
 
+     Item()
      setValue()
      getValue
      setSerialNumber()

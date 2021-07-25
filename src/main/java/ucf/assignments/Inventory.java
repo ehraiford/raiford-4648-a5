@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Inventory {
+
     private ArrayList<Item> items = new ArrayList();
 
     void addItem(Item input) {
